@@ -13,22 +13,22 @@ user_choice = user_choice.upper()
 
 # Validate user's choice (if INVESTMENT). And request data.
 if user_choice == "INVESTMENT":
-    p = input("Please enter the amount of money you want to invest: ")
+    amount_user_deposits = input("Please enter the amount of money you want to invest: ")
     interest_percentage = input("Please enter the interest rate (as percentage). Only the number: ")
-    r = int(interest_percentage) / 100
-    t = input("Please enter the number of years you plan to invest: ")
+    interest_percentage_divided_by_100 = int(interest_percentage) / 100
+    years_to_invest = input("Please enter the number of years you plan to invest: ")
     interest = input("Which kind of interest would you like to invest on? 'Simple' or 'Compound'? ")
     interest = interest.upper()
     # Validate which kind of investment want to take, if SIMPLE. Calculate total amount to get and display.
     if interest == "SIMPLE":
-        a = int(p) * (1 + r*int(t))
-        a = round(a, 2)
-        print(f"The total amount you will get is {a}")
+        total_amount_with_interest_applied = int(amount_user_deposits) * (1 + interest_percentage_divided_by_100*int(years_to_invest))
+        total_amount_with_interest_applied = round(total_amount_with_interest_applied, 2)
+        print(f"The total amount you will get is {total_amount_with_interest_applied}")
     # Validate which kind of investment want to take, if COMPOUND. Calculate total amount to get and display.
     elif interest == "COMPOUND":
-        a = int(p) * math.pow ((1 + r), int(t))
-        a = round(a, 2)
-        print(f"The total amount you will get is {a}")
+        total_amount_with_interest_applied = int(amount_user_deposits) * math.pow ((1 + interest_percentage_divided_by_100), int(years_to_invest))
+        total_amount_with_interest_applied = round(total_amount_with_interest_applied, 2)
+        print(f"The total amount you will get is {total_amount_with_interest_applied}")
     else:
         # Error message if choice entry is different than SIMPLE or COMPOUND.
         print("Invalid entry, please try again and choose 'SIMPLE' or 'COMPOUND'.")
