@@ -34,12 +34,12 @@ if user_choice == "INVESTMENT":
         print("Invalid entry, please try again and choose 'SIMPLE' or 'COMPOUND'.")
 # Validate user's choice (if BOND). Request data, calculate monthly payment and display.
 elif user_choice == "BOND":
-    p = float(input("Please enter the present value of the house: "))
+    present_house_value = float(input("Please enter the present value of the house: "))
     interest_rate = float(input("Please enter the annual interest rate (as percentage). Only the number: "))
     interest_percentage = interest_rate / 100
-    i = interest_percentage / 12
-    n = int(input("Please enter the number of months you plan to take to repay the bond: "))
-    repayment = (i * p) / (1 - (1 + i) ** (-n))
+    monthly_interest_rate = interest_percentage / 12
+    number_of_months_to_repay = int(input("Please enter the number of months you plan to take to repay the bond: "))
+    repayment = (monthly_interest_rate * present_house_value) / (1 - (1 + monthly_interest_rate) ** (-number_of_months_to_repay))
     repayment = round(repayment, 2)
     print(f"The total amount you have to repay monthly is: {repayment}")
 else:
